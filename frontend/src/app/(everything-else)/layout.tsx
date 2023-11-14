@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
-import './globals.css'
+import '../globals.css'
 import { ReactNode } from 'react'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${inter.variable} font-poppins bg-gray-900 text-white`}
+        className={`${poppins.variable} ${inter.variable} bg-gray-900 font-poppins text-white`}
       >
         <main className="min-h-screen">{children}</main>
       </body>
