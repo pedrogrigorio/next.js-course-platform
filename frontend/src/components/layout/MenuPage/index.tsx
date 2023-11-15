@@ -8,6 +8,18 @@ import Playlists from '@/components/icons/Playlists'
 import { ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 
+interface SubmenuSchema {
+  id: number
+  text: string
+}
+
+interface PageProps {
+  path: string
+  text: string
+  icon: string
+  menu?: SubmenuSchema[]
+}
+
 const getIconByName = (iconName: string, isActive: boolean) => {
   switch (iconName) {
     case 'Home':
@@ -21,14 +33,7 @@ const getIconByName = (iconName: string, isActive: boolean) => {
   }
 }
 
-interface PageProps {
-  path: string
-  text: string
-  icon: string
-  menu?: string[]
-}
-
-export default function Page({ path, text, icon, menu }: PageProps) {
+export default function MenuPage({ path, text, icon, menu }: PageProps) {
   const pathname = usePathname()
   const [isSubmenuActive, setIsSubmenuActive] = useState(false)
 
@@ -36,11 +41,13 @@ export default function Page({ path, text, icon, menu }: PageProps) {
     setIsSubmenuActive(!isSubmenuActive)
   }
 
+  console.log(pathname)
+
   return (
     <>
       <li className="flex">
         <Link href={path} className="flex flex-1 items-center gap-4">
-          {pathname === path ? (
+          {pathname.includes(path) ? (
             <>
               <button className="flex h-8 w-8 items-center justify-center rounded-xl bg-orange-500 hover:bg-orange-400">
                 {getIconByName(icon, true)}
@@ -78,10 +85,17 @@ export default function Page({ path, text, icon, menu }: PageProps) {
         }`}
       >
         {menu?.map((subpage) => (
-          <li key={subpage}>
-            <Link href={'/home'}>
-              <span className="text-xs text-gray-300 transition duration-200 hover:text-white">
-                {subpage}
+          <li
+            key={subpage.id}
+            className={`overflow-hidden text-ellipsis pr-6 hover:text-white ${
+              pathname.includes(`${path}/${subpage.id}`)
+                ? 'text-white'
+                : 'text-gray-300'
+            }`}
+          >
+            <Link href={`${path}/${subpage.id}`}>
+              <span className="whitespace-nowrap text-xs transition duration-200 ">
+                {subpage.text}
               </span>
             </Link>
           </li>

@@ -1,5 +1,5 @@
 import { pages } from '@/data/SidemenuData'
-import Pages from '../Pages'
+import MenuPage from '../MenuPage'
 
 export default function Sidemenu() {
   return (
@@ -16,7 +16,7 @@ export default function Sidemenu() {
         <ul className="flex flex-col gap-8">
           {pages.map((page) => (
             <div key={page.text}>
-              <Pages
+              <MenuPage
                 path={page.path}
                 text={page.text}
                 icon={page.icon}
