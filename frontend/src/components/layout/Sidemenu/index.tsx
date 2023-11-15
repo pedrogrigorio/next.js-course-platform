@@ -1,4 +1,4 @@
-import { pages } from '@/data/SidemenuData'
+import { pages } from '@/data/SidemenuPages'
 import MenuPage from '../MenuPage'
 
 export default function Sidemenu() {

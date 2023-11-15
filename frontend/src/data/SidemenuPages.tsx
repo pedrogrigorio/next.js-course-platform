@@ -3,14 +3,14 @@ interface SubmenuSchema {
   text: string
 }
 
-interface SidemenuDataSchema {
+interface SidemenuPagesSchema {
   path: string
   text: string
   icon: string
   menu?: SubmenuSchema[]
 }
 
-export const pages: SidemenuDataSchema[] = [
+export const pages: SidemenuPagesSchema[] = [
   {
     path: '/home',
     text: 'Início',

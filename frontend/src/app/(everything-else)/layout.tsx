@@ -3,6 +3,7 @@ import { Inter, Poppins } from 'next/font/google'
 import '../globals.css'
 import { ReactNode } from 'react'
 import Sidemenu from '@/components/layout/Sidemenu'
+import Topbar from '@/components/layout/Topbar'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const poppins = Poppins({
@@ -26,7 +27,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Sidemenu />
 
           <div className="relative flex-1 overflow-hidden bg-[#191820]">
-            <div className="absolute inset-0 z-10 overflow-y-auto">
+            <div className="absolute inset-0 z-10 flex flex-col overflow-y-auto">
+              <Topbar />
               {children}
             </div>
 
