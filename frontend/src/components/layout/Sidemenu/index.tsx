@@ -1,4 +1,5 @@
-import Pages from './components/Pages'
+import { pages } from '@/data/SidemenuData'
+import Pages from '../Pages'
 
 export default function Sidemenu() {
   return (
@@ -12,7 +13,18 @@ export default function Sidemenu() {
       <nav className="flex flex-col gap-6">
         <span className="text-xs font-semibold text-gray-300">MENU</span>
 
-        <Pages />
+        <ul className="flex flex-col gap-8">
+          {pages.map((page) => (
+            <div key={page.text}>
+              <Pages
+                path={page.path}
+                text={page.text}
+                icon={page.icon}
+                menu={page.menu}
+              />
+            </div>
+          ))}
+        </ul>
 
         <div className="mt-10 h-0.5 bg-gray-500" />
       </nav>
