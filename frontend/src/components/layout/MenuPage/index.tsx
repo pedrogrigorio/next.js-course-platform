@@ -93,7 +93,7 @@ export default function MenuPage({ path, text, icon, menu }: PageProps) {
                 : 'text-gray-300'
             }`}
           >
-            <Link href={`${path}/${subpage.id}`}>
+            <Link href={`${path}/${subpage.id}/introduction`}>
               <span className="whitespace-nowrap text-xs transition duration-200 ">
                 {subpage.text}
               </span>
