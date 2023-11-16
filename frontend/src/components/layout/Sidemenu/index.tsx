@@ -1,5 +1,5 @@
 import { pages } from '@/data/SidemenuPages'
-import MenuPage from '../MenuPage'
+import MenuPage from './MenuPage'
 
 export default function Sidemenu() {
   return (

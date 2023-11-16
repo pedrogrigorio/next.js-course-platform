@@ -1,8 +1,8 @@
 'use client'
 
-import ModulesTabs from '../ModulesTabs'
-import SearchBox from '@/components/ui/SearchBox'
-import User from '@/components/ui/User'
+import ModulesTabs from './ModulesTabs'
+import SearchBox from '@/components/layout/Topbar/SearchBox'
+import User from '@/components/layout/Topbar/User'
 import { useParams } from 'next/navigation'
 
 export default function Topbar() {

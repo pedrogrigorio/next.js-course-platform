@@ -1,6 +1,6 @@
 import NotificationDot from '@/components/icons/NotificationDot'
 import Image from 'next/image'
-import UserDropdownMenu from '../UserDropdownMenu'
+import UserDropdownMenu from './UserDropdownMenu'
 
 export default function User() {
   return (
