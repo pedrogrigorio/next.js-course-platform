@@ -4,15 +4,16 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { modules } from '@/data/TopbarModules'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useParams } from 'next/navigation'
 
 export default function ModulesTabs() {
   const [leftArrowActive, setLeftArrowActive] = useState(false)
   const [rightArrowActive, setRightArrowActive] = useState(true)
   const scrollableContainer = useRef<HTMLDivElement>(null)
 
-  const pathname = usePathname()
-  const currentTab = pathname.split('/').pop()
+  const params = useParams()
+  const courseId = params.courseId
+  const moduleId = params.moduleId
 
   useEffect(() => {
     if (scrollableContainer.current) {
@@ -58,13 +59,26 @@ export default function ModulesTabs() {
         className="flex h-full gap-12 overflow-hidden overflow-x-scroll scroll-smooth px-8 scrollbar-none"
         ref={scrollableContainer}
       >
+        <Link
+          href={`/courses/${courseId}/`}
+          className="relative flex h-full items-center justify-center"
+        >
+          {moduleId === undefined ? (
+            <>
+              <span className="whitespace-nowrap text-white">Introdução</span>
+              <div className="absolute left-1/2 top-3/4 h-8 w-8 -translate-x-1/2 transform rounded-full bg-orange-500 blur" />
+            </>
+          ) : (
+            <span className="whitespace-nowrap text-gray-300">Introdução</span>
+          )}
+        </Link>
         {modules.map((module) => (
           <Link
-            href={`${module.path}`}
+            href={`/courses/${courseId}/${module.id}`}
             key={module.id}
             className="relative flex h-full items-center justify-center"
           >
-            {currentTab === module.path ? (
+            {moduleId === module.id.toString() ? (
               <>
                 <span className="whitespace-nowrap text-white">
                   {module.text}

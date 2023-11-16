@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import Home from '@/components/icons/Home'
 import Courses from '@/components/icons/Courses'
 import Playlists from '@/components/icons/Playlists'
@@ -35,6 +35,11 @@ const getIconByName = (iconName: string, isActive: boolean) => {
 
 export default function MenuPage({ path, text, icon, menu }: PageProps) {
   const pathname = usePathname()
+  const params = useParams()
+
+  const isIntroductionPage = params.module === undefined
+  console.log(isIntroductionPage)
+
   const [isSubmenuActive, setIsSubmenuActive] = useState(false)
 
   const handleClick = () => {
@@ -93,7 +98,7 @@ export default function MenuPage({ path, text, icon, menu }: PageProps) {
                 : 'text-gray-300'
             }`}
           >
-            <Link href={`${path}/${subpage.id}/introduction`}>
+            <Link href={`${path}/${subpage.id}`}>
               <span className="whitespace-nowrap text-xs transition duration-200 ">
                 {subpage.text}
               </span>

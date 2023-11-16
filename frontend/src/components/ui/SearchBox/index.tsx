@@ -1,16 +1,8 @@
 import { Search } from 'lucide-react'
 
-interface SearchBoxProps {
-  display: boolean
-}
-
-export default function SearchBox({ display }: SearchBoxProps) {
+export default function SearchBox() {
   return (
-    <div
-      className={`flex w-[600px] items-center gap-2 rounded-xl bg-white bg-opacity-10 px-4 py-2 ${
-        display ? 'invisible' : ''
-      }`}
-    >
+    <div className="flex h-10 w-[600px] items-center gap-2 rounded-xl bg-white bg-opacity-10 px-4 py-2">
       <input
         type="text"
         placeholder="Search"
