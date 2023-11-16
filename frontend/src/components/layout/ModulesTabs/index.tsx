@@ -1,10 +1,10 @@
 'use client'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { modules } from '@/data/TopbarModules'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { modules } from '@/data/TopbarModules'
 
 export default function ModulesTabs() {
   const [leftArrowActive, setLeftArrowActive] = useState(false)
