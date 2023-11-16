@@ -80,7 +80,7 @@ export default function MenuPage({ path, text, icon, menu }: PageProps) {
         )}
       </li>
       <ul
-        className={`scrollbar-thin scrollbar-thumb-gray-500 overflow-hidden overflow-y-auto pl-12 transition-all duration-1000 ${
+        className={`overflow-hidden overflow-y-auto pl-12 transition-all duration-1000 scrollbar-thin scrollbar-thumb-gray-500 ${
           isSubmenuActive ? 'max-h-40' : 'max-h-0'
         }`}
       >
