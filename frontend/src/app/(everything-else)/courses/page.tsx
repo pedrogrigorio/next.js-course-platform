@@ -1,3 +1,3 @@
 export default function Courses() {
-  return <div>Courses</div>
+  return <h1 className="px-8 py-4">Courses</h1>
 }
