@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { data } from '../data/data'
+import { data } from '../data/courses'
 
 class CourseController {
   getAllCourses(req: Request, res: Response) {
