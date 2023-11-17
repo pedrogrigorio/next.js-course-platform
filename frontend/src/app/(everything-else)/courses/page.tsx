@@ -27,9 +27,9 @@ export default function Courses() {
   }, [])
 
   return (
-    <div className=" flex flex-col gap-8 px-8 py-4">
+    <div className="flex flex-col gap-8 px-8 py-4">
       <h1>Courses</h1>
-      <ul className="grid gap-4 grid-auto-fit">
+      <ul className="grid-cols-galery grid gap-4">
         {courses.map((course) => (
           <li key={course.id}>
             <Link href={`courses/${course.id}`}>

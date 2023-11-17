@@ -12,6 +12,9 @@ const config: Config = {
         poppins: 'var(--font-poppins)',
         inter: 'var(--font-inter)',
       },
+      gridTemplateColumns: {
+        galery: 'repeat(auto-fit, minmax(0, 320px))',
+      },
     },
 
     colors: {
