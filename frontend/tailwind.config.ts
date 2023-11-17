@@ -16,6 +16,7 @@ const config: Config = {
 
     colors: {
       white: '#ffffff',
+      black: '#000000',
       gray: {
         50: '#ebeaec',
         100: '#bfbfc4',
@@ -54,6 +55,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar')],
+  plugins: [
+    require('tailwind-scrollbar'),
+    require('@shrutibalasa/tailwind-grid-auto-fit'),
+  ],
 }
 export default config

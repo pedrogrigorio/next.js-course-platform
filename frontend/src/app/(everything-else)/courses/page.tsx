@@ -1,5 +1,6 @@
 'use client'
 
+import CourseCard from '@/components/ui/CourseCard'
 import { api } from '@/lib/axios'
 import { useEffect, useState } from 'react'
 
@@ -8,6 +9,7 @@ interface CourseSchema {
   name: string
   classes: number
   modules: number
+  imgUrl: string
 }
 
 export default function Courses() {
@@ -24,12 +26,17 @@ export default function Courses() {
   }, [])
 
   return (
-    <div className="px-8 py-4">
+    <div className=" flex flex-col gap-8 px-8 py-4">
       <h1>Courses</h1>
-      <ul>
+      <ul className="grid-auto-fit grid gap-4">
         {courses.map((course) => (
           <li key={course.id}>
-            <span>{course.name}</span>
+            <CourseCard
+              name={course.name}
+              modules={course.modules}
+              classes={course.classes}
+              imgUrl={course.imgUrl}
+            />
           </li>
         ))}
       </ul>
