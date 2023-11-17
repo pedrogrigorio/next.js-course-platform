@@ -23,7 +23,7 @@ export const pages: SidemenuPagesSchema[] = [
     menu: [
       {
         id: 0,
-        text: 'Curso tríade',
+        text: 'Curso tríade de violão',
       },
       {
         id: 1,
@@ -31,7 +31,7 @@ export const pages: SidemenuPagesSchema[] = [
       },
       {
         id: 2,
-        text: 'Trade milhonário',
+        text: 'Trader milionário',
       },
       {
         id: 3,

@@ -16,7 +16,7 @@ export default function Topbar() {
 
   return (
     <div className="flex h-auto w-full flex-col">
-      <div className="flex justify-between px-8 pb-2 pt-8">
+      <div className="flex justify-between gap-3 px-8 pb-2 pt-8">
         {!isIntroductionPage ? <SearchBox /> : <div className="h-10" />}
         <User />
       </div>

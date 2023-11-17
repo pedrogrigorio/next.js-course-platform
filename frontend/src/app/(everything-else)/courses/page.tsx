@@ -2,6 +2,7 @@
 
 import CourseCard from '@/components/ui/CourseCard'
 import { api } from '@/lib/axios'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 interface CourseSchema {
@@ -28,15 +29,17 @@ export default function Courses() {
   return (
     <div className=" flex flex-col gap-8 px-8 py-4">
       <h1>Courses</h1>
-      <ul className="grid-auto-fit grid gap-4">
+      <ul className="grid gap-4 grid-auto-fit">
         {courses.map((course) => (
           <li key={course.id}>
-            <CourseCard
-              name={course.name}
-              modules={course.modules}
-              classes={course.classes}
-              imgUrl={course.imgUrl}
-            />
+            <Link href={`courses/${course.id}`}>
+              <CourseCard
+                name={course.name}
+                modules={course.modules}
+                classes={course.classes}
+                imgUrl={course.imgUrl}
+              />
+            </Link>
           </li>
         ))}
       </ul>
