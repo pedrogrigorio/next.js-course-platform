@@ -16,6 +16,7 @@ app.get('/courses', CourseController.getAllCourses)
 app.get('/courses/:courseId', CourseController.getCourseById)
 
 app.get('/playlists', PlaylistController.getAllPlaylists)
+app.get('/playlists/:playlistId', PlaylistController.getPlaylistById)
 
 app.get('/classes', ClassControler.getAllClasses)
 

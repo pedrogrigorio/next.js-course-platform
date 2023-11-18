@@ -14,7 +14,7 @@ interface CourseSchema {
   imgUrl: string
 }
 
-interface ClassSchema {
+interface LessonSchema {
   id: number
   lessonTitle: string
   course: string
@@ -25,7 +25,7 @@ interface ClassSchema {
 
 export default function Home() {
   const [courses, setCourses] = useState<CourseSchema[]>([])
-  const [classes, setClasses] = useState<ClassSchema[]>([])
+  const [lessons, setLessons] = useState<LessonSchema[]>([])
   const [visibileItems, setVisibileItems] = useState(0)
   const gridRef = useRef<HTMLUListElement>(null)
 
@@ -48,10 +48,10 @@ export default function Home() {
 
   const fetchData = async () => {
     const coursesData = await api.get('/courses')
-    const classesData = await api.get('/classes')
+    const lessonsData = await api.get('/classes')
 
     setCourses(coursesData.data)
-    setClasses(classesData.data)
+    setLessons(lessonsData.data)
   }
 
   useEffect(() => {
@@ -94,7 +94,7 @@ export default function Home() {
             gridTemplateRows: '1fr',
           }}
         >
-          {classes.slice(0, visibileItems).map((lesson) => (
+          {lessons.slice(0, visibileItems).map((lesson) => (
             <li key={lesson.id}>
               <Link href="/home">
                 <ClassCard
