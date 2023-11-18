@@ -5,6 +5,7 @@ interface CourseCardProps {
   classes: number
   modules: number
   imgUrl: string
+  isHome: boolean
 }
 
 export default function CourseCard({
@@ -12,9 +13,14 @@ export default function CourseCard({
   modules,
   classes,
   imgUrl,
+  isHome,
 }: CourseCardProps) {
   return (
-    <div className="relative flex h-64 max-w-xs overflow-hidden rounded-2xl">
+    <div
+      className={`relative flex max-w-sm overflow-hidden rounded-2xl ${
+        isHome ? 'h-96' : 'h-64'
+      } `}
+    >
       <div className="z-20 flex flex-col items-start justify-between gap-6 p-7">
         <h2>{name}</h2>
         <div className="flex flex-col">

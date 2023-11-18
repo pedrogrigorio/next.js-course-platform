@@ -12,7 +12,7 @@ export default function PlaylistCard({
   imgUrl,
 }: PlaylistCardProps) {
   return (
-    <div className="flex h-64 max-w-xs flex-col gap-5 overflow-hidden rounded-2xl bg-gray-700">
+    <div className="flex h-64 max-w-sm flex-col gap-5 overflow-hidden rounded-2xl bg-gray-700">
       <div className="h-full w-full items-center justify-center overflow-hidden">
         <Image height={500} width={500} alt="img" src={imgUrl} />
       </div>
