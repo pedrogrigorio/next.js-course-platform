@@ -1,5 +1,6 @@
 'use client'
 
+import ClassCard from '@/components/ui/ClassCard'
 import CourseCard from '@/components/ui/CourseCard'
 import { api } from '@/lib/axios'
 import Link from 'next/link'
@@ -13,8 +14,18 @@ interface CourseSchema {
   imgUrl: string
 }
 
+interface ClassSchema {
+  id: number
+  lessonTitle: string
+  course: string
+  module: number
+  duration: string
+  imgUrl: string
+}
+
 export default function Home() {
   const [courses, setCourses] = useState<CourseSchema[]>([])
+  const [classes, setClasses] = useState<ClassSchema[]>([])
   const [visibileItems, setVisibileItems] = useState(0)
   const gridRef = useRef<HTMLUListElement>(null)
 
@@ -36,9 +47,11 @@ export default function Home() {
   }, [courses])
 
   const fetchData = async () => {
-    const response = await api.get('/courses')
-    console.log(response.data)
-    setCourses(response.data)
+    const coursesData = await api.get('/courses')
+    const classesData = await api.get('/classes')
+
+    setCourses(coursesData.data)
+    setClasses(classesData.data)
   }
 
   useEffect(() => {
@@ -46,12 +59,12 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="flex flex-col gap-14 px-8 py-4">
+    <div className="flex flex-col gap-14 px-8 pb-12 pt-4">
       <section className="flex flex-col gap-6">
         <h1>Descubra</h1>
         <ul
           ref={gridRef}
-          className="grid auto-rows-auto gap-4"
+          className="grid gap-4"
           style={{
             gridTemplateColumns: `repeat(${visibileItems},minmax(0,1fr))`,
             gridTemplateRows: '1fr',
@@ -73,8 +86,28 @@ export default function Home() {
         </ul>
       </section>
       <section className="flex flex-col gap-6">
-        <span className="text-lg font-medium">Últimos assistidos</span>
-        <div></div>
+        <h2 className="font-medium text-white">Últimos assistidos</h2>
+        <ul
+          className="grid gap-4"
+          style={{
+            gridTemplateColumns: `repeat(${visibileItems},minmax(0,1fr))`,
+            gridTemplateRows: '1fr',
+          }}
+        >
+          {classes.slice(0, visibileItems).map((lesson) => (
+            <li key={lesson.id}>
+              <Link href="/home">
+                <ClassCard
+                  lessonTitle={lesson.lessonTitle}
+                  course={lesson.course}
+                  duration={lesson.duration}
+                  module={lesson.module}
+                  imgUrl={lesson.imgUrl}
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   )
