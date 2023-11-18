@@ -32,7 +32,7 @@ export default function Playlist({ params }: PlaylistProps) {
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
 
   return (
-    <div className="flex flex-col gap-14 px-8 pb-12 pt-4">
+    <div className="flex flex-col gap-8 px-8 pb-12 pt-4">
       <h1>{playlist?.name}</h1>
       <ul
         ref={gridRef}
