@@ -1,6 +1,6 @@
 'use client'
 
-import ClassCard from '@/components/ui/ClassCard'
+import LessonCard from '@/components/ui/LessonCard'
 import { useFetch } from '@/hooks/useFetch'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
@@ -20,7 +20,7 @@ type Lesson = {
 }
 
 export default function CourseModule({ params }: CourseModuleProps) {
-  const { data: lessons } = useFetch<Lesson[]>('/classes')
+  const { data: lessons } = useFetch<Lesson[]>('/lessons')
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
 
   if (params.moduleId < 1 || params.moduleId > 15) {
@@ -41,7 +41,7 @@ export default function CourseModule({ params }: CourseModuleProps) {
         {lessons?.map((lesson) => (
           <li key={lesson.id}>
             <Link href="/home">
-              <ClassCard
+              <LessonCard
                 lessonTitle={lesson.lessonTitle}
                 course={lesson.course}
                 duration={lesson.duration}

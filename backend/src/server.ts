@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import CourseController from './controllers/CourseController'
 import PlaylistController from './controllers/PlaylistController'
-import ClassControler from './controllers/ClassControler'
+import LessonControler from './controllers/LessonControler'
 
 const app = express()
 
@@ -18,7 +18,7 @@ app.get('/courses/:courseId', CourseController.getCourseById)
 app.get('/playlists', PlaylistController.getAllPlaylists)
 app.get('/playlists/:playlistId', PlaylistController.getPlaylistById)
 
-app.get('/classes', ClassControler.getAllClasses)
+app.get('/lessons', LessonControler.getAllLessons)
 
 app.listen(3333, () => {
   console.log('Server is running')

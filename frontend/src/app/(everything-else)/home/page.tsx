@@ -1,15 +1,15 @@
 'use client'
 
-import ClassCard from '@/components/ui/ClassCard'
 import CourseCard from '@/components/ui/CourseCard'
 import { useFetch } from '@/hooks/useFetch'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
+import LessonCard from '@/components/ui/LessonCard'
 
 type Course = {
   id: number
   name: string
-  classes: number
+  lessons: number
   modules: number
   imgUrl: string
 }
@@ -26,12 +26,20 @@ type Lesson = {
 export default function Home() {
   const [visibileItems, gridRef] = useGridResizer<HTMLUListElement>(296)
   const { data: courses } = useFetch<Course[]>('/courses')
-  const { data: lessons } = useFetch<Lesson[]>('/classes')
+  const { data: lessons } = useFetch<Lesson[]>('/lessons')
 
   return (
     <div className="flex flex-col gap-14 px-8 pb-12 pt-4">
       <section className="flex flex-col gap-6">
-        <h1>Descubra</h1>
+        <div className="flex items-end justify-between">
+          <h1>Descubra</h1>
+          <Link href="/courses">
+            <span className="text-lg font-medium text-gray-300 hover:text-white">
+              Ver tudo
+            </span>
+          </Link>
+        </div>
+
         <ul
           ref={gridRef}
           className="grid gap-4"
@@ -46,7 +54,7 @@ export default function Home() {
                 <CourseCard
                   name={course.name}
                   modules={course.modules}
-                  classes={course.classes}
+                  lessons={course.lessons}
                   imgUrl={course.imgUrl}
                   isHome={true}
                 />
@@ -56,7 +64,15 @@ export default function Home() {
         </ul>
       </section>
       <section className="flex flex-col gap-6">
-        <h2 className="font-medium text-white">Últimos assistidos</h2>
+        <div className="flex items-end justify-between">
+          <h2 className="font-medium text-white">Últimos assistidos</h2>
+          <Link href="/courses">
+            <span className="text-lg font-medium text-gray-300 hover:text-white">
+              Ver tudo
+            </span>
+          </Link>
+        </div>
+
         <ul
           className="grid gap-4"
           style={{
@@ -67,7 +83,7 @@ export default function Home() {
           {lessons?.slice(0, visibileItems).map((lesson) => (
             <li key={lesson.id}>
               <Link href="/home">
-                <ClassCard
+                <LessonCard
                   lessonTitle={lesson.lessonTitle}
                   course={lesson.course}
                   duration={lesson.duration}

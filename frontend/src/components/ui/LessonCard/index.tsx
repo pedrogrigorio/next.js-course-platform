@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-interface ClassCardProps {
+interface LessonCardProps {
   lessonTitle: string
   course: string
   module: number
@@ -8,13 +8,13 @@ interface ClassCardProps {
   imgUrl: string
 }
 
-export default function ClassCard({
+export default function LessonCard({
   lessonTitle,
   course,
   module,
   duration,
   imgUrl,
-}: ClassCardProps) {
+}: LessonCardProps) {
   return (
     <div className="flex h-80 max-w-sm flex-col overflow-hidden rounded-2xl bg-gray-700">
       <div className="relative h-72 w-full items-center justify-center overflow-hidden">

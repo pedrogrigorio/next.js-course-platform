@@ -1,6 +1,6 @@
 'use client'
 
-import ClassCard from '@/components/ui/ClassCard'
+import LessonCard from '@/components/ui/LessonCard'
 import { useFetch } from '@/hooks/useFetch'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
@@ -12,7 +12,7 @@ interface PlaylistProps {
 type Playlist = {
   id: number
   name: string
-  classes: number
+  lessons: number
   imgUrl: string
 }
 
@@ -28,7 +28,7 @@ type Lesson = {
 export default function Playlist({ params }: PlaylistProps) {
   const url = `/playlists/${params.playlistId}`
   const { data: playlist } = useFetch<Playlist>(url)
-  const { data: lessons } = useFetch<Lesson[]>('/classes')
+  const { data: lessons } = useFetch<Lesson[]>('/lessons')
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
 
   return (
@@ -45,7 +45,7 @@ export default function Playlist({ params }: PlaylistProps) {
         {lessons?.map((lesson) => (
           <li key={lesson.id}>
             <Link href="/home">
-              <ClassCard
+              <LessonCard
                 lessonTitle={lesson.lessonTitle}
                 course={lesson.course}
                 duration={lesson.duration}

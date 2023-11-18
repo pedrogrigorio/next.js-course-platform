@@ -8,7 +8,7 @@ import Link from 'next/link'
 type Course = {
   id: number
   name: string
-  classes: number
+  lessons: number
   modules: number
   imgUrl: string
 }
@@ -33,7 +33,7 @@ export default function Courses() {
               <CourseCard
                 name={course.name}
                 modules={course.modules}
-                classes={course.classes}
+                lessons={course.lessons}
                 imgUrl={course.imgUrl}
                 isHome={false}
               />

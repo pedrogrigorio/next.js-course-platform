@@ -8,7 +8,7 @@ import Link from 'next/link'
 type Playlist = {
   id: number
   name: string
-  classes: number
+  lessons: number
   imgUrl: string
 }
 
@@ -31,7 +31,7 @@ export default function Playlists() {
             <Link href={`playlists/${playlist.id}`}>
               <PlaylistCard
                 name={playlist.name}
-                classes={playlist.classes}
+                lessons={playlist.lessons}
                 imgUrl={playlist.imgUrl}
               />
             </Link>

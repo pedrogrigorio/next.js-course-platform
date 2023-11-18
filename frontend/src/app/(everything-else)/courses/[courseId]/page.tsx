@@ -1,7 +1,7 @@
 interface CourseProps {
-  params: { id: number }
+  params: { courseId: number }
 }
 
 export default function CourseIntroduction({ params }: CourseProps) {
-  return <div className="px-8 py-4">Introdução do Curso {params.id}</div>
+  return <div className="px-8 py-4">Introdução do Curso {params.courseId}</div>
 }

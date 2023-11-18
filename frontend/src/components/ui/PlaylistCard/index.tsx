@@ -2,13 +2,13 @@ import Image from 'next/image'
 
 interface PlaylistCardProps {
   name: string
-  classes: number
+  lessons: number
   imgUrl: string
 }
 
 export default function PlaylistCard({
   name,
-  classes,
+  lessons,
   imgUrl,
 }: PlaylistCardProps) {
   return (
@@ -21,7 +21,7 @@ export default function PlaylistCard({
         <div className="overflow-hidden text-ellipsis">
           <span className="whitespace-nowrap font-medium">{name}</span>
         </div>
-        <span className="text-sm text-gray-200">{classes} aulas</span>
+        <span className="text-sm text-gray-200">{lessons} aulas</span>
       </div>
     </div>
   )

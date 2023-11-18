@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 interface CourseCardProps {
   name: string
-  classes: number
+  lessons: number
   modules: number
   imgUrl: string
   isHome: boolean
@@ -11,7 +11,7 @@ interface CourseCardProps {
 export default function CourseCard({
   name,
   modules,
-  classes,
+  lessons,
   imgUrl,
   isHome,
 }: CourseCardProps) {
@@ -25,7 +25,7 @@ export default function CourseCard({
         <h2>{name}</h2>
         <div className="flex flex-col">
           <span className="font-medium">{modules} Módulos</span>
-          <span className="text-gray-200">{classes} aulas</span>
+          <span className="text-gray-200">{lessons} aulas</span>
         </div>
       </div>
       <div className="absolute inset-0 z-10 bg-black opacity-50" />
