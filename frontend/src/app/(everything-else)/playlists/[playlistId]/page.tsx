@@ -1,22 +1,22 @@
 'use client'
 
 import ClassCard from '@/components/ui/ClassCard'
-import { api } from '@/lib/axios'
+import { useFetch } from '@/hooks/useFetch'
+import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 
 interface PlaylistProps {
   params: { playlistId: number }
 }
 
-interface PlaylistSchema {
+type Playlist = {
   id: number
   name: string
   classes: number
   imgUrl: string
 }
 
-interface LessonSchema {
+type Lesson = {
   id: number
   lessonTitle: string
   course: string
@@ -26,39 +26,10 @@ interface LessonSchema {
 }
 
 export default function Playlist({ params }: PlaylistProps) {
-  const [playlist, setPlaylist] = useState<PlaylistSchema>()
-  const [lessons, setLessons] = useState<LessonSchema[]>([])
-  const [cols, setCols] = useState(0)
-  const gridRef = useRef<HTMLUListElement>(null)
-
-  const fetchData = async () => {
-    const playlistData = await api.get(`/playlists/${params.playlistId}`)
-    const lessonsData = await api.get('/classes')
-
-    setPlaylist(playlistData.data)
-    setLessons(lessonsData.data)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  useEffect(() => {
-    const grid = gridRef.current
-    const updateVisibleItems = () => {
-      if (grid) {
-        const containerWidth = grid.getBoundingClientRect().width
-        const itemsPerPage = Math.floor(containerWidth / 296)
-        setCols(itemsPerPage)
-      }
-    }
-
-    updateVisibleItems()
-    window.addEventListener('resize', updateVisibleItems)
-    return () => {
-      window.removeEventListener('resize', updateVisibleItems)
-    }
-  }, [lessons])
+  const url = `/playlists/${params.playlistId}`
+  const { data: playlist } = useFetch<Playlist>(url)
+  const { data: lessons } = useFetch<Lesson[]>('/classes')
+  const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
 
   return (
     <div className="flex flex-col gap-14 px-8 pb-12 pt-4">
@@ -71,7 +42,7 @@ export default function Playlist({ params }: PlaylistProps) {
           gridTemplateRows: '1fr',
         }}
       >
-        {lessons.map((lesson) => (
+        {lessons?.map((lesson) => (
           <li key={lesson.id}>
             <Link href="/home">
               <ClassCard

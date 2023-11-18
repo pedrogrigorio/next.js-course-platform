@@ -2,11 +2,11 @@
 
 import ClassCard from '@/components/ui/ClassCard'
 import CourseCard from '@/components/ui/CourseCard'
-import { api } from '@/lib/axios'
+import { useFetch } from '@/hooks/useFetch'
+import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
-import { useState, useEffect, useRef } from 'react'
 
-interface CourseSchema {
+type Course = {
   id: number
   name: string
   classes: number
@@ -14,7 +14,7 @@ interface CourseSchema {
   imgUrl: string
 }
 
-interface LessonSchema {
+type Lesson = {
   id: number
   lessonTitle: string
   course: string
@@ -24,39 +24,9 @@ interface LessonSchema {
 }
 
 export default function Home() {
-  const [courses, setCourses] = useState<CourseSchema[]>([])
-  const [lessons, setLessons] = useState<LessonSchema[]>([])
-  const [visibileItems, setVisibileItems] = useState(0)
-  const gridRef = useRef<HTMLUListElement>(null)
-
-  useEffect(() => {
-    const grid = gridRef.current
-    const updateVisibleItems = () => {
-      if (grid) {
-        const containerWidth = grid.getBoundingClientRect().width
-        const itemsPerPage = Math.floor(containerWidth / 352)
-        setVisibileItems(itemsPerPage)
-      }
-    }
-
-    updateVisibleItems()
-    window.addEventListener('resize', updateVisibleItems)
-    return () => {
-      window.removeEventListener('resize', updateVisibleItems)
-    }
-  }, [courses])
-
-  const fetchData = async () => {
-    const coursesData = await api.get('/courses')
-    const lessonsData = await api.get('/classes')
-
-    setCourses(coursesData.data)
-    setLessons(lessonsData.data)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const [visibileItems, gridRef] = useGridResizer<HTMLUListElement>(296)
+  const { data: courses } = useFetch<Course[]>('/courses')
+  const { data: lessons } = useFetch<Lesson[]>('/classes')
 
   return (
     <div className="flex flex-col gap-14 px-8 pb-12 pt-4">
@@ -70,7 +40,7 @@ export default function Home() {
             gridTemplateRows: '1fr',
           }}
         >
-          {courses.slice(0, visibileItems).map((course) => (
+          {courses?.slice(0, visibileItems).map((course) => (
             <li key={course.id} className="flex-1">
               <Link href={`courses/${course.id}`}>
                 <CourseCard
@@ -94,7 +64,7 @@ export default function Home() {
             gridTemplateRows: '1fr',
           }}
         >
-          {lessons.slice(0, visibileItems).map((lesson) => (
+          {lessons?.slice(0, visibileItems).map((lesson) => (
             <li key={lesson.id}>
               <Link href="/home">
                 <ClassCard

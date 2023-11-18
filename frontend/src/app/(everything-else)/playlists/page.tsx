@@ -1,11 +1,11 @@
 'use client'
 
 import PlaylistCard from '@/components/ui/PlaylistCard'
-import { api } from '@/lib/axios'
+import { useFetch } from '@/hooks/useFetch'
+import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 
-interface PlaylistSchema {
+type Playlist = {
   id: number
   name: string
   classes: number
@@ -13,36 +13,8 @@ interface PlaylistSchema {
 }
 
 export default function Playlists() {
-  const [playlists, setPlaylists] = useState<PlaylistSchema[]>([])
-  const [cols, setCols] = useState(0)
-  const gridRef = useRef<HTMLUListElement>(null)
-
-  useEffect(() => {
-    const grid = gridRef.current
-    const updateVisibleItems = () => {
-      if (grid) {
-        const containerWidth = grid.getBoundingClientRect().width
-        const itemsPerPage = Math.floor(containerWidth / 296)
-        setCols(itemsPerPage)
-      }
-    }
-
-    updateVisibleItems()
-    window.addEventListener('resize', updateVisibleItems)
-    return () => {
-      window.removeEventListener('resize', updateVisibleItems)
-    }
-  }, [playlists])
-
-  const fetchData = async () => {
-    const response = await api.get('/playlists')
-    console.log(response.data)
-    setPlaylists(response.data)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
+  const { data: playlists } = useFetch<Playlist[]>('/playlists')
 
   return (
     <div className="flex flex-col gap-8 px-8 py-4">
@@ -54,7 +26,7 @@ export default function Playlists() {
           gridTemplateColumns: `repeat(${cols},minmax(0,1fr))`,
         }}
       >
-        {playlists.map((playlist) => (
+        {playlists?.map((playlist) => (
           <li key={playlist.id}>
             <Link href={`playlists/${playlist.id}`}>
               <PlaylistCard

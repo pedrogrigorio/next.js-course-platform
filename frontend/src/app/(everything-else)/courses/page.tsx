@@ -1,11 +1,11 @@
 'use client'
 
 import CourseCard from '@/components/ui/CourseCard'
-import { api } from '@/lib/axios'
+import { useFetch } from '@/hooks/useFetch'
+import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 
-interface CourseSchema {
+type Course = {
   id: number
   name: string
   classes: number
@@ -14,36 +14,8 @@ interface CourseSchema {
 }
 
 export default function Courses() {
-  const [courses, setCourses] = useState<CourseSchema[]>([])
-  const [cols, setCols] = useState(0)
-  const gridRef = useRef<HTMLUListElement>(null)
-
-  useEffect(() => {
-    const grid = gridRef.current
-    const updateVisibleItems = () => {
-      if (grid) {
-        const containerWidth = grid.getBoundingClientRect().width
-        const itemsPerPage = Math.floor(containerWidth / 296)
-        setCols(itemsPerPage)
-      }
-    }
-
-    updateVisibleItems()
-    window.addEventListener('resize', updateVisibleItems)
-    return () => {
-      window.removeEventListener('resize', updateVisibleItems)
-    }
-  }, [courses])
-
-  const fetchData = async () => {
-    const response = await api.get('/courses')
-    console.log(response.data)
-    setCourses(response.data)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const { data: courses } = useFetch<Course[]>('/courses')
+  const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
 
   return (
     <div className="flex flex-col gap-8 px-8 py-4">
@@ -55,7 +27,7 @@ export default function Courses() {
           gridTemplateColumns: `repeat(${cols},minmax(0,1fr))`,
         }}
       >
-        {courses.map((course) => (
+        {courses?.map((course) => (
           <li key={course.id}>
             <Link href={`courses/${course.id}`}>
               <CourseCard
