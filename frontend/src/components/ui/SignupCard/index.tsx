@@ -1,21 +1,18 @@
-import LoginForm from '@/components/forms/LoginForm'
+import SignupForm from '@/components/forms/SignupForm'
+import SignupTitleSection from './SignupTitleSection'
 import FooterSection from './FooterSection'
-import LoginTitleSection from './LoginTitleSection'
 import AditionalAuthOptions from '../AditionalAuthOptions'
 
-export default function LoginCard() {
+export default function SignupCard() {
   return (
     <div
       className="relative w-[480px] overflow-hidden rounded-3xl "
       style={{ border: '2px solid rgba(175, 175, 175, 0.5)' }}
     >
       <div className="z-20 flex flex-col gap-4 px-10 pb-10 pt-24">
-        <LoginTitleSection />
-        <LoginForm />
-        <div className="flex flex-col items-center justify-center gap-10">
-          <span>Esqueceu a senha?</span>
-          <AditionalAuthOptions />
-        </div>
+        <SignupTitleSection />
+        <SignupForm />
+        <AditionalAuthOptions />
         <FooterSection />
       </div>
 
