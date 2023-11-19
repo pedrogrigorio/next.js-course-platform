@@ -19,6 +19,7 @@ app.get('/playlists', PlaylistController.getAllPlaylists)
 app.get('/playlists/:playlistId', PlaylistController.getPlaylistById)
 
 app.get('/lessons', LessonControler.getAllLessons)
+app.get('/lessons/:lessonId', LessonControler.getLessonById)
 
 app.listen(3333, () => {
   console.log('Server is running')

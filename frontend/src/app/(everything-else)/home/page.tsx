@@ -82,7 +82,7 @@ export default function Home() {
         >
           {lessons?.slice(0, visibileItems).map((lesson) => (
             <li key={lesson.id}>
-              <Link href="/home">
+              <Link href={`/lesson/${lesson.id}`}>
                 <LessonCard
                   lessonTitle={lesson.lessonTitle}
                   course={lesson.course}
