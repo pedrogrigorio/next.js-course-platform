@@ -44,7 +44,7 @@ export default function Playlist({ params }: PlaylistProps) {
       >
         {lessons?.map((lesson) => (
           <li key={lesson.id}>
-            <Link href="/home">
+            <Link href={`/lesson/${lesson.id}`}>
               <LessonCard
                 lessonTitle={lesson.lessonTitle}
                 course={lesson.course}
