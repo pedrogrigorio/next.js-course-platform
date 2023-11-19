@@ -6,7 +6,7 @@ export default function SearchBox() {
       <input
         type="text"
         placeholder="Search"
-        className="flex-1 border-none bg-white bg-opacity-0 text-sm outline-none placeholder:text-gray-300"
+        className="flex-1 border-none border-transparent bg-white bg-opacity-0 text-sm outline-none placeholder:text-gray-300 focus:border-transparent focus:ring-0"
       />
       <div>
         <Search size={16} color="#808191" />

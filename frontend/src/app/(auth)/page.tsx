@@ -1,4 +1,4 @@
-import LoginForm from '@/components/forms/LoginForm'
+import LoginCard from '@/components/ui/LoginCard'
 
 export default function Login() {
   return (
@@ -9,7 +9,7 @@ export default function Login() {
           <h1 className="md:text-6xl lg:text-7xl 2xl:text-8xl">Bem vindo</h1>
           <h1 className="md:text-6xl lg:text-7xl 2xl:text-8xl">de volta</h1>
         </div>
-        <LoginForm />
+        <LoginCard />
       </div>
     </div>
   )
