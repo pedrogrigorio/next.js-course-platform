@@ -29,9 +29,11 @@ export default function LoginForm() {
     if (user === usernameDev && password === passwordDev) {
       router.push('/home')
     }
+
+    reset()
   }
 
-  const { register, handleSubmit } = useForm<loginFormData>({
+  const { register, handleSubmit, reset } = useForm<loginFormData>({
     resolver: zodResolver(loginFormSchema),
   })
 

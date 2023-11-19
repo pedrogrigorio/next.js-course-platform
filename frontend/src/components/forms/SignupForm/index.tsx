@@ -44,11 +44,13 @@ export default function SignupForm() {
   function handleSignin(data: signupFormData) {
     console.log(data)
     setSignupSuccessful(true)
+    reset()
   }
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<signupFormData>({
     resolver: zodResolver(signupFormSchema),
