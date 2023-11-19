@@ -37,22 +37,22 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(handleSignin)} className="flex flex-col">
-      <div className="mb-3 flex flex-col gap-6">
-        <div className="flex h-14 items-center gap-2 rounded-xl border-2 border-white bg-white bg-opacity-0 px-4 py-2">
+      <div className="mb-3 flex flex-col gap-6 text-base lg:text-xl">
+        <div className="flex h-10 items-center gap-2 rounded-xl border-2 border-white bg-white bg-opacity-0 px-4 py-2 sm:h-12 lg:h-14">
           <input
             type="text"
             placeholder="Usuário"
             {...register('user')}
-            className="flex-1 border-none bg-transparent text-xl font-normal placeholder:text-gray-300 focus:ring-0"
+            className="flex-1 border-none bg-transparent text-xs font-normal placeholder:text-gray-300 focus:ring-0 sm:text-base"
           />
         </div>
 
-        <div className="flex h-14 items-center gap-2 rounded-xl border-2 border-white bg-white bg-opacity-0 px-4 py-2">
+        <div className="flex h-10 items-center gap-2 rounded-xl border-2 border-white bg-white bg-opacity-0 px-4 py-2 sm:h-12 lg:h-14">
           <input
             type={showPassword ? 'text' : 'password'}
             placeholder="Senha"
             {...register('password')}
-            className="flex-1 border-none bg-transparent text-xl font-normal placeholder:text-gray-300 focus:ring-0"
+            className="flex-1 border-none bg-transparent text-xs font-normal placeholder:text-gray-300 focus:ring-0 sm:text-base"
           />
           {showPassword ? (
             <EyeOffIcon onClick={() => setShowPassword(false)} />
@@ -71,7 +71,10 @@ export default function LoginForm() {
         Lembrar de mim
       </label>
 
-      <button type="submit" className="rounded-xl bg-red-500 py-3 text-xl">
+      <button
+        type="submit"
+        className="rounded-xl bg-red-500 py-3 text-xl hover:bg-red-400"
+      >
         Login
       </button>
     </form>

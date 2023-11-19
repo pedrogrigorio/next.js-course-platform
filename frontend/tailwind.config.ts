@@ -17,6 +17,10 @@ const config: Config = {
         galery: 'repeat(auto-fit, minmax(0, 320px))',
       },
 
+      screens: {
+        '3xl': '1921px',
+      },
+
       colors: {
         white: '#ffffff',
         black: '#000000',

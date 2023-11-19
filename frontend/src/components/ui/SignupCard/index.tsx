@@ -6,10 +6,10 @@ import AditionalAuthOptions from '../AditionalAuthOptions'
 export default function SignupCard() {
   return (
     <div
-      className="relative w-[480px] overflow-hidden rounded-3xl "
+      className="relative max-w-[480px] flex-1 overflow-hidden rounded-3xl "
       style={{ border: '2px solid rgba(175, 175, 175, 0.5)' }}
     >
-      <div className="z-20 flex flex-col gap-4 px-10 pb-10 pt-24">
+      <div className="3xl:pt-24 z-20 flex flex-col gap-4 px-5 py-3 sm:px-10 sm:py-10 2xl:pt-14">
         <SignupTitleSection />
         <SignupForm />
         <AditionalAuthOptions />
