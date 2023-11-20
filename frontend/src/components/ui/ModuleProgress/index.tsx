@@ -29,14 +29,14 @@ export default function ModuleProgress({
   const { data: lessons } = useFetch<Lesson[]>('/lessons')
 
   return (
-    <div className="flex h-full w-[500px] flex-col items-center ">
+    <div className="flex max-h-full w-[500px] flex-col items-center ">
       <div
         className={`flex w-full items-center gap-4 rounded-t-xl bg-gray-400 bg-opacity-20 px-4 py-4`}
       >
         <CircularProgress
           aria-label="Loading..."
           size="lg"
-          value={90}
+          value={57}
           color="danger"
           showValueLabel={true}
         />

@@ -1,5 +1,6 @@
 'use client'
 
+import SaveOnPlaylist from '@/components/icons/SaveOnPlaylist'
 import CommentsSection from '@/components/ui/CommentsSection'
 import ModuleProgress from '@/components/ui/ModuleProgress'
 import VideoPlayer from '@/components/ui/VideoPlayer'
@@ -25,13 +26,26 @@ export default function Lesson({ params }: LessonProps) {
 
   return (
     <div className="mt-8 px-8 pb-16">
-      <div className="flex h-96 gap-16">
-        <VideoPlayer />
-        <ModuleProgress
-          course={lesson?.course}
-          module={lesson?.module}
-          lessonId={lesson?.id}
-        />
+      <div className="flex w-fit flex-col gap-4">
+        <div className="flex h-96 gap-16">
+          <div className="flex h-full w-[600px]">
+            <VideoPlayer />
+          </div>
+
+          <ModuleProgress
+            course={lesson?.course}
+            module={lesson?.module}
+            lessonId={lesson?.id}
+          />
+        </div>
+        <div className="flex justify-between">
+          <button className="rounded-xl bg-red-500 p-4 hover:bg-red-400">
+            <SaveOnPlaylist size={24} />
+          </button>
+          <button className="item-self-end rounded-xl bg-red-500 px-4 py-2 hover:bg-red-400">
+            Próximo módulo
+          </button>
+        </div>
       </div>
       <VideoTabs />
       <CommentsSection />
