@@ -41,7 +41,6 @@ export default function Comment({ name, imgUrl, likes }: CommentProps) {
           <span>{likes}</span>
         </div>
 
-        {/* <button className="hover:text-white">Gostei</button> */}
         <span>•</span>
         <button className="hover:text-white">Responder</button>
       </div>
