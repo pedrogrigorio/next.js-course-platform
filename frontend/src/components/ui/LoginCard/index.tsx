@@ -9,7 +9,7 @@ export default function LoginCard() {
       className="relative max-w-[480px] overflow-hidden rounded-3xl "
       style={{ border: '2px solid rgba(175, 175, 175, 0.5)' }}
     >
-      <div className="3xl:pt-24 z-20 flex flex-col gap-4 px-5 py-3 sm:px-10 sm:py-10 2xl:pt-14">
+      <div className=" z-20 flex flex-col gap-4 px-5 py-3 sm:px-10 sm:py-10 2xl:pt-14 3xl:pt-24">
         <LoginTitleSection />
         <LoginForm />
         <div className="flex flex-col items-center justify-center gap-10">

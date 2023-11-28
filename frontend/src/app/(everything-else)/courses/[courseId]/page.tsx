@@ -24,7 +24,7 @@ export default function CourseIntroduction({ params }: CourseProps) {
 
   return (
     <div className="mt-8 px-8 pb-16">
-      <div className="flex flex-col h-auto lg:flex-row lg:h-48 2xl:h-96 gap-16">
+      <div className="flex h-auto flex-col gap-16 lg:h-48 lg:flex-row 2xl:h-96">
         <VideoPlayer />
         <div className="mt-5 flex flex-col gap-2">
           <h1>{course?.name} </h1>

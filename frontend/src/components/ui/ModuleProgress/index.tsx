@@ -7,7 +7,6 @@ import { useState } from 'react'
 
 interface ModuleProgressProps {
   lessonId: number | undefined
-  course: string | undefined
   module: number | undefined
 }
 
@@ -22,14 +21,13 @@ type Lesson = {
 
 export default function ModuleProgress({
   lessonId,
-  course,
   module,
 }: ModuleProgressProps) {
   const [isOpen, setIsOpen] = useState(false)
   const { data: lessons } = useFetch<Lesson[]>('/lessons')
 
   return (
-    <div className="flex h-80 lg:max-h-full lg:h-auto max-w-[500px] flex-col items-center ">
+    <div className="flex h-80 max-w-[500px] flex-col items-center lg:h-auto lg:max-h-full">
       <div
         className={`flex w-full items-center gap-4 rounded-t-xl bg-gray-400 bg-opacity-20 px-4 py-4`}
       >

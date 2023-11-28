@@ -27,16 +27,12 @@ export default function Lesson({ params }: LessonProps) {
   return (
     <div className="mt-8 px-8 pb-16">
       <div className="flex w-fit flex-col gap-4">
-        <div className="flex flex-col h-auto lg:flex-row lg:h-48 2xl:h-96 gap-16">
+        <div className="flex h-auto flex-col gap-16 lg:h-48 lg:flex-row 2xl:h-96">
           <div className="flex h-full w-96 2xl:w-[600px]">
             <VideoPlayer />
           </div>
 
-          <ModuleProgress
-            course={lesson?.course}
-            module={lesson?.module}
-            lessonId={lesson?.id}
-          />
+          <ModuleProgress module={lesson?.module} lessonId={lesson?.id} />
         </div>
         <div className="flex justify-between">
           <button className="rounded-xl bg-red-500 p-4 hover:bg-red-400">

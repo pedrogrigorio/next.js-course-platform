@@ -26,10 +26,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <Providers>
           <main className="flex min-h-screen">
-            <div className='hidden md:block'>
+            <div className="hidden md:block">
               <Sidemenu />
             </div>
-            
 
             <div className="relative flex-1 overflow-hidden bg-[#191820]">
               <div className="absolute inset-0 z-10 flex flex-col overflow-y-auto">
