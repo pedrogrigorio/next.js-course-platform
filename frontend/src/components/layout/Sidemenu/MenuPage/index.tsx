@@ -2,9 +2,9 @@
 
 import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
-import Home from '@/components/icons/Home'
 import Courses from '@/components/icons/Courses'
 import Playlists from '@/components/icons/Playlists'
+import Home from '@/components/icons/Home'
 import { ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 
