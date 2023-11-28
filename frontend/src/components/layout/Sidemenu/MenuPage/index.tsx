@@ -59,7 +59,6 @@ const Home = ({ size, active }: IconProps) => {
   )
 }
 
-
 const getIconByName = (iconName: string, isActive: boolean) => {
   switch (iconName) {
     case 'Home':
