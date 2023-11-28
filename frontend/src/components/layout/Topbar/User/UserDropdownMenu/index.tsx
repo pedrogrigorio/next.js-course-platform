@@ -31,7 +31,7 @@ export default function UserDropdownMenu() {
             className="flex w-full items-center justify-center gap-2"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="text-sm">Thomas</span>
+            <span className="text-sm hidden sm:block">Thomas</span>
             <ChevronDown
               size={16}
               color={isOpen ? '#FFF' : '#808191'}
