@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <main className="flex min-h-screen">
           <div className="relative flex-1 overflow-hidden bg-[#191820]">
-            <div className="absolute inset-0 z-10 overflow-y-auto">
+            <div className="absolute inset-0 z-10 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500">
               {children}
             </div>
 
