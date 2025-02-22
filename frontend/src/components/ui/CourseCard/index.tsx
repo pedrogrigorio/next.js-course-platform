@@ -3,7 +3,7 @@ import Image from 'next/image'
 interface CourseCardProps {
   name: string
   lessons: number
-  modules: number
+  modules?: number
   imgUrl: string
   isHome: boolean
 }

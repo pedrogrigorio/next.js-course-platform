@@ -1,7 +1,7 @@
 'use client'
 
 import CourseCard from '@/components/ui/CourseCard'
-import { useFetch } from '@/hooks/useFetch'
+import { courses } from '@/data/courses'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
 
@@ -14,7 +14,7 @@ type Course = {
 }
 
 export default function Courses() {
-  const { data: courses } = useFetch<Course[]>('/courses')
+  // const { data: courses } = useFetch<Course[]>('/courses')
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
 
   return (

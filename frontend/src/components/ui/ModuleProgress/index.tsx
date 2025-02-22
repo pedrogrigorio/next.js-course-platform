@@ -1,6 +1,6 @@
 'use client'
 
-import { useFetch } from '@/hooks/useFetch'
+import { lessons } from '@/data/lessons'
 import { CircularProgress } from '@nextui-org/progress'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
@@ -24,7 +24,7 @@ export default function ModuleProgress({
   module,
 }: ModuleProgressProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const { data: lessons } = useFetch<Lesson[]>('/lessons')
+  // const { data: lessons } = useFetch<Lesson[]>('/lessons')
 
   return (
     <div className="flex h-80 max-w-[500px] flex-col items-center lg:h-auto lg:max-h-full">

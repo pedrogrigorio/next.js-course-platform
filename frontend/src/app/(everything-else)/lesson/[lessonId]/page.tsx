@@ -5,7 +5,7 @@ import CommentsSection from '@/components/ui/CommentsSection'
 import ModuleProgress from '@/components/ui/ModuleProgress'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import VideoTabs from '@/components/ui/VideoTabs'
-import { useFetch } from '@/hooks/useFetch'
+import { lessons } from '@/data/lessons'
 
 interface LessonProps {
   params: { lessonId: number }
@@ -21,9 +21,9 @@ type Lesson = {
 }
 
 export default function Lesson({ params }: LessonProps) {
-  const url = `/lessons/${params.lessonId}`
-  const { data: lesson } = useFetch<Lesson>(url)
-
+  // const url = `/lessons/${params.lessonId}`
+  // const { data: lesson } = useFetch<Lesson>(url)
+  const lesson = lessons.find((lesson) => lesson.id === Number(params.lessonId))
   return (
     <div className="mt-8 px-8 pb-16">
       <div className="flex w-fit flex-col gap-4">

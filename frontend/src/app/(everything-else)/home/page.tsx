@@ -1,10 +1,11 @@
 'use client'
 
 import CourseCard from '@/components/ui/CourseCard'
-import { useFetch } from '@/hooks/useFetch'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
 import LessonCard from '@/components/ui/LessonCard'
+import { courses } from '@/data/courses'
+import { lessons } from '@/data/lessons'
 
 type Course = {
   id: number
@@ -25,8 +26,8 @@ type Lesson = {
 
 export default function Home() {
   const [visibileItems, gridRef] = useGridResizer<HTMLUListElement>(296)
-  const { data: courses } = useFetch<Course[]>('/courses')
-  const { data: lessons } = useFetch<Lesson[]>('/lessons')
+  // const { data: courses } = useFetch<Course[]>('/courses')
+  // const { data: lessons } = useFetch<Lesson[]>('/lessons')
 
   return (
     <div className="flex flex-col gap-14 px-8 pb-12 pt-4">

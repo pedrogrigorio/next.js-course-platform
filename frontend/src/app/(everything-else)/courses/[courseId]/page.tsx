@@ -4,7 +4,7 @@ import CheckCircle from '@/components/icons/CheckCircle'
 import CommentsSection from '@/components/ui/CommentsSection'
 import VideoPlayer from '@/components/ui/VideoPlayer'
 import VideoTabs from '@/components/ui/VideoTabs'
-import { useFetch } from '@/hooks/useFetch'
+import { courses } from '@/data/courses'
 
 interface CourseProps {
   params: { courseId: number }
@@ -19,8 +19,11 @@ type Course = {
 }
 
 export default function CourseIntroduction({ params }: CourseProps) {
-  const url = `/courses/${params.courseId}`
-  const { data: course } = useFetch<Course>(url)
+  // const url = `/courses/${params.courseId}`
+  // const { data: course } = useFetch<Course>(url)
+  const course = courses.find((course) => course.id === Number(params.courseId))
+
+  if (!course) return null
 
   return (
     <div className="mt-8 px-8 pb-16">

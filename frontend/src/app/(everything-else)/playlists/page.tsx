@@ -1,7 +1,7 @@
 'use client'
 
 import PlaylistCard from '@/components/ui/PlaylistCard'
-import { useFetch } from '@/hooks/useFetch'
+import { playlists } from '@/data/playlists'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
 
@@ -14,7 +14,7 @@ type Playlist = {
 
 export default function Playlists() {
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
-  const { data: playlists } = useFetch<Playlist[]>('/playlists')
+  // const { data: playlists } = useFetch<Playlist[]>('/playlists')
 
   return (
     <div className="flex flex-col gap-8 px-8 py-4">
