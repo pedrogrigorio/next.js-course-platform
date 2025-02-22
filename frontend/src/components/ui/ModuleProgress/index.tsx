@@ -10,15 +10,6 @@ interface ModuleProgressProps {
   module: number | undefined
 }
 
-type Lesson = {
-  id: number
-  lessonTitle: string
-  course: string
-  module: number
-  duration: string
-  imgUrl: string
-}
-
 export default function ModuleProgress({
   lessonId,
   module,

@@ -5,13 +5,6 @@ import { playlists } from '@/data/playlists'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
 
-type Playlist = {
-  id: number
-  name: string
-  lessons: number
-  imgUrl: string
-}
-
 export default function Playlists() {
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
   // const { data: playlists } = useFetch<Playlist[]>('/playlists')

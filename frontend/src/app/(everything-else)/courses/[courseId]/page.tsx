@@ -10,14 +10,6 @@ interface CourseProps {
   params: { courseId: number }
 }
 
-type Course = {
-  id: number
-  name: string
-  lessons: number
-  modules: number
-  imgUrl: string
-}
-
 export default function CourseIntroduction({ params }: CourseProps) {
   // const url = `/courses/${params.courseId}`
   // const { data: course } = useFetch<Course>(url)

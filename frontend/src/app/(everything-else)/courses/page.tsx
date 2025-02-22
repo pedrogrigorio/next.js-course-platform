@@ -5,14 +5,6 @@ import { courses } from '@/data/courses'
 import useGridResizer from '@/hooks/useGridResizer'
 import Link from 'next/link'
 
-type Course = {
-  id: number
-  name: string
-  lessons: number
-  modules: number
-  imgUrl: string
-}
-
 export default function Courses() {
   // const { data: courses } = useFetch<Course[]>('/courses')
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)

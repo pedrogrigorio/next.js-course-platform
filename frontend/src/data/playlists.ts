@@ -14,4 +14,3 @@ export const playlists = [
       'https://i.natgeofe.com/n/8a4cd21e-3906-4c9d-8838-b13ef85f4b6e/tpc18-outdoor-gallery-1002418-12000351_01_square.jpg',
   },
 ]
-

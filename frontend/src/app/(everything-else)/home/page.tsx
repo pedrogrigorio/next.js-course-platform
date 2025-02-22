@@ -7,23 +7,6 @@ import LessonCard from '@/components/ui/LessonCard'
 import { courses } from '@/data/courses'
 import { lessons } from '@/data/lessons'
 
-type Course = {
-  id: number
-  name: string
-  lessons: number
-  modules: number
-  imgUrl: string
-}
-
-type Lesson = {
-  id: number
-  lessonTitle: string
-  course: string
-  module: number
-  duration: string
-  imgUrl: string
-}
-
 export default function Home() {
   const [visibileItems, gridRef] = useGridResizer<HTMLUListElement>(296)
   // const { data: courses } = useFetch<Course[]>('/courses')

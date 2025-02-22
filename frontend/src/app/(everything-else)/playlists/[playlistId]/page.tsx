@@ -17,20 +17,13 @@ type Playlist = {
   imgUrl: string
 }
 
-type Lesson = {
-  id: number
-  lessonTitle: string
-  course: string
-  module: number
-  duration: string
-  imgUrl: string
-}
-
 export default function Playlist({ params }: PlaylistProps) {
   // const url = `/playlists/${params.playlistId}`
   // const { data: playlist } = useFetch<Playlist>(url)
   // const { data: lessons } = useFetch<Lesson[]>('/lessons')
-  const playlist = playlists.find((playlist) => playlist.id === Number(params.playlistId))
+  const playlist = playlists.find(
+    (playlist) => playlist.id === Number(params.playlistId),
+  )
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
 
   return (

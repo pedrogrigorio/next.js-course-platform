@@ -10,15 +10,6 @@ interface CourseModuleProps {
   params: { courseId: number; moduleId: number }
 }
 
-type Lesson = {
-  id: number
-  lessonTitle: string
-  course: string
-  module: number
-  duration: string
-  imgUrl: string
-}
-
 export default function CourseModule({ params }: CourseModuleProps) {
   // const { data: lessons } = useFetch<Lesson[]>('/lessons')
   const [cols, gridRef] = useGridResizer<HTMLUListElement>(296)
